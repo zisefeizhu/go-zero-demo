@@ -1,0 +1,23 @@
+Name: User
+Host: 0.0.0.0
+Port: 8889
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.01:3306)/user?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+CacheRedis:
+- Host: 127.0.0.1:6379
+  Type: node
+  Pass: zisefeizhu
+
+
+UserRpc:
+ Target: consul://127.0.0.1:8500/user.rpc?wait=14s
+ NonBlock: true
+
+# 验证配置
+Auth:
+  AccessSecret: uOvKLmVfztaXGpNYd4Z0I1SiT7MweJhl
+  AccessExpire: 86400
+
+

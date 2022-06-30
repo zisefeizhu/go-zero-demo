@@ -1,0 +1,22 @@
+Name: user.rpc
+ListenOn: 0.0.0.0:8888
+
+# consul   替换etcd
+Consul:
+  Host: 127.0.0.1:8500 # consul endpoint
+  Key: user.rpc # 注册到consul的服务名字
+  Meta:
+    Protocol: grpc
+  Tag:
+    - tag
+    - rpc
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.01:3306)/user?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+CacheRedis:
+- Host: 127.0.0.1:6379
+  Type: node
+  Pass: zisefeizhu
+
+Salt: HWVOFkGgPTryzICwd7qnJaZR9KQ2i8xe
