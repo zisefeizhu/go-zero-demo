@@ -21,6 +21,10 @@ import (
 //
 var configFile = flag.String("f", "/Users/zisefeizhu/linkun/goproject/go-zero-demo/apps/user/rpc/etc/user.yaml", "the config file")
 
+/*
+   需求改： 增加列出所有用户的接口
+*/
+
 func main() {
 	flag.Parse()
 	var c config.Config

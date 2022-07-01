@@ -36,3 +36,8 @@ func (s *UserServer) UserInfo(ctx context.Context, in *user.UserInfoRequest) (*u
 	l := logic.NewUserInfoLogic(ctx, s.svcCtx)
 	return l.UserInfo(in)
 }
+
+func (s *UserServer) ListUser(ctx context.Context, in *user.ListUserRequest) (*user.ListUserResponse, error) {
+	l := logic.NewListUserLogic(ctx, s.svcCtx)
+	return l.ListUser(in)
+}

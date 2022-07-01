@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 package user;
 
 option go_package = "./user";
@@ -41,8 +43,18 @@ message UserInfoResponse {
   string Mobile = 4;
 }
 
+
+message ListUserRequest {
+}
+
+message ListUserResponse {
+  repeated UserInfoResponse data = 1;
+}
+
+
 service User {
   rpc Login(LoginRequest) returns(LoginResponse);
   rpc Register(RegisterRequest) returns(RegisterResponse);
   rpc UserInfo(UserInfoRequest) returns(UserInfoResponse);
+  rpc ListUser(ListUserRequest) returns(ListUserResponse);
 }

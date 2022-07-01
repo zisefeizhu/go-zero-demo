@@ -31,6 +31,7 @@ type (
 		Insert(ctx context.Context, data *User) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*User, error)
 		FindOneByMobile(ctx context.Context, mobile string) (*User, error)
+		FindList() ([]*User, error)
 		Update(ctx context.Context, newData *User) error
 		Delete(ctx context.Context, id int64) error
 	}
@@ -83,6 +84,22 @@ func (m *defaultUserModel) FindOne(ctx context.Context, id int64) (*User, error)
 	switch err {
 	case nil:
 		return &resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+
+// 封装查询所有的sql
+
+func (m *defaultUserModel) FindList() ([]*User, error) {
+	var resp []*User
+	query := fmt.Sprintf("select %s from %s ", userRows, m.table)
+	err := m.QueryRowsNoCache(&resp, query)
+	switch err {
+	case nil:
+		return resp, nil
 	case sqlc.ErrNotFound:
 		return nil, ErrNotFound
 	default:

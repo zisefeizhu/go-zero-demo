@@ -31,3 +31,10 @@ type UserInfoResponse struct {
 	Gender int64  `json:"gender"`
 	Mobile string `json:"mobile"`
 }
+
+type ListUserResponse struct {
+	Id     int64  `json:"id"`
+	Name   string `json:"name"`
+	Gender int64  `json:"gender"`
+	Mobile string `json:"mobile"`
+}

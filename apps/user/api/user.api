@@ -32,6 +32,14 @@ type (
 		Gender int64  `json:"gender"`
 		Mobile string `json:"mobile"`
 	}
+
+	ListUserResponse {
+		Id     int64  `json:"id"`
+		Name   string `json:"name"`
+		Gender int64  `json:"gender"`
+		Mobile string `json:"mobile"`
+	}
+
 	// 用户信息
 )
 
@@ -41,6 +49,9 @@ service User {
 	
 	@handler Register
 	post /api/user/register(RegisterRequest) returns (RegisterResponse)
+	
+	@handler ListUser
+	post /api/user/listuser returns (ListUserResponse)
 }
 
 @server(
